@@ -8,35 +8,35 @@
 
 @layer base {
   :root {
-    /* Light olive green theme */
-    --background: 80 25% 95%;
-    --foreground: 80 20% 15%;
+    /* Olive green theme - stronger background */
+    --background: 75 30% 85%;
+    --foreground: 80 30% 12%;
 
-    --card: 80 20% 98%;
-    --card-foreground: 80 20% 15%;
+    --card: 75 25% 90%;
+    --card-foreground: 80 30% 12%;
 
-    --popover: 80 20% 98%;
-    --popover-foreground: 80 20% 15%;
+    --popover: 75 25% 90%;
+    --popover-foreground: 80 30% 12%;
 
     /* Primary accent - Olive green */
     --primary: 80 45% 35%;
     --primary-foreground: 80 20% 98%;
 
     /* Secondary - Light olive */
-    --secondary: 80 20% 90%;
-    --secondary-foreground: 80 20% 20%;
+    --secondary: 75 25% 80%;
+    --secondary-foreground: 80 30% 15%;
 
-    --muted: 80 15% 90%;
-    --muted-foreground: 80 10% 40%;
+    --muted: 75 20% 80%;
+    --muted-foreground: 80 15% 35%;
 
-    --accent: 80 30% 88%;
-    --accent-foreground: 80 20% 15%;
+    --accent: 75 25% 78%;
+    --accent-foreground: 80 30% 12%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 80 15% 82%;
-    --input: 80 15% 85%;
+    --border: 75 20% 72%;
+    --input: 75 20% 78%;
     --ring: 80 45% 35%;
 
     --radius: 0.5rem;
