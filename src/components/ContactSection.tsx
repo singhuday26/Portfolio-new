@@ -5,6 +5,7 @@ import { Mail, Github, Linkedin } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { sanitizeInput, validateEmail, validateName, validateMessage, rateLimiter } from "@/lib/security";
+import { supabase } from "@/lib/supabase";
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -62,7 +63,18 @@ const ContactSection = () => {
     setIsSubmitting(true);
     
     try {
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Save to Supabase database
+      const { error } = await supabase
+        .from('contact_submissions')
+        .insert([
+          {
+            name: sanitizeInput(formData.name),
+            email: sanitizeInput(formData.email),
+            message: sanitizeInput(formData.message),
+          }
+        ]);
+
+      if (error) throw error;
       
       toast({
         title: "Message sent!",
