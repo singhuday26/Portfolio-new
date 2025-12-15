@@ -19,39 +19,39 @@ const HeroSection = React.memo(() => {
       <div className="container mx-auto px-6 py-20">
         <div className="max-w-3xl mx-auto text-center">
           {/* Profile Image */}
-          <div className="mb-8">
+          <div className="mb-8 animate-scale-in">
             <img
               src={profileImage}
               alt="Uday Singh"
               width={120}
               height={120}
               loading="eager"
-              className="w-[120px] h-[120px] rounded-full mx-auto object-cover border-2 border-border"
+              className="w-[120px] h-[120px] rounded-full mx-auto object-cover border-2 border-border animate-float"
             />
           </div>
 
           {/* Name */}
-          <h1 className="text-5xl sm:text-6xl md:text-7xl font-semibold tracking-tight text-foreground mb-6">
+          <h1 className="text-5xl sm:text-6xl md:text-7xl font-semibold tracking-tight text-foreground mb-6 animate-text-reveal">
             Uday Singh
           </h1>
 
           {/* Headline */}
-          <p className="text-xl sm:text-2xl text-muted-foreground mb-6">
+          <p className="text-xl sm:text-2xl text-muted-foreground mb-6 animate-fade-up delay-200">
             UI Engineer
           </p>
 
           {/* Description */}
-          <p className="text-base sm:text-lg text-muted-foreground/80 mb-10 max-w-xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg text-muted-foreground/80 mb-10 max-w-xl mx-auto leading-relaxed animate-fade-up delay-300">
             Building scalable, consumer-facing web applications with React and modern JavaScript. Focused on clean architecture and exceptional user experiences.
           </p>
 
           {/* Social Links */}
-          <div className="flex items-center justify-center gap-4 mb-12">
+          <div className="flex items-center justify-center gap-4 mb-12 animate-fade-up delay-400">
             <a
               href="https://github.com/singhuday26"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 text-muted-foreground hover:text-foreground transition-colors"
+              className="p-2 text-muted-foreground hover:text-foreground hover:-translate-y-1 transition-all duration-200"
               aria-label="GitHub Profile"
             >
               <Github className="w-5 h-5" />
@@ -60,14 +60,14 @@ const HeroSection = React.memo(() => {
               href="https://linkedin.com/in/udaysingh2626"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 text-muted-foreground hover:text-foreground transition-colors"
+              className="p-2 text-muted-foreground hover:text-foreground hover:-translate-y-1 transition-all duration-200"
               aria-label="LinkedIn Profile"
             >
               <Linkedin className="w-5 h-5" />
             </a>
             <a
               href="mailto:udaysingh2626@gmail.com"
-              className="p-2 text-muted-foreground hover:text-foreground transition-colors"
+              className="p-2 text-muted-foreground hover:text-foreground hover:-translate-y-1 transition-all duration-200"
               aria-label="Email"
             >
               <Mail className="w-5 h-5" />
@@ -75,11 +75,11 @@ const HeroSection = React.memo(() => {
           </div>
 
           {/* CTAs */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-up delay-500">
             <Button
               onClick={scrollToAbout}
               size="lg"
-              className="px-8"
+              className="px-8 btn-hover-lift animate-pulse-glow"
             >
               View My Work
             </Button>
@@ -87,7 +87,7 @@ const HeroSection = React.memo(() => {
               variant="outline"
               size="lg"
               asChild
-              className="px-8"
+              className="px-8 btn-hover-lift"
             >
               <a href="#contact">
                 Get in Touch
@@ -97,13 +97,13 @@ const HeroSection = React.memo(() => {
         </div>
 
         {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:block">
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:block animate-fade-in delay-600">
           <button
             onClick={scrollToAbout}
             className="p-2 text-muted-foreground/50 hover:text-muted-foreground transition-colors"
             aria-label="Scroll down"
           >
-            <ArrowDown className="w-5 h-5 animate-bounce" />
+            <ArrowDown className="w-5 h-5 animate-bounce-slow" />
           </button>
         </div>
       </div>

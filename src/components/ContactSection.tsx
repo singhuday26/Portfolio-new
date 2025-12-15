@@ -116,7 +116,7 @@ const ContactSection = () => {
                 href={link.href}
                 target={link.href.startsWith('http') ? '_blank' : undefined}
                 rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                className="p-3 rounded-lg border border-border text-muted-foreground hover:text-foreground hover:border-foreground/20 transition-colors"
+                className="p-3 rounded-lg border border-border text-muted-foreground hover:text-foreground hover:border-foreground/20 hover:-translate-y-1 hover:shadow-md transition-all duration-200"
                 aria-label={link.label}
               >
                 <link.icon className="w-5 h-5" />
@@ -200,7 +200,7 @@ const ContactSection = () => {
             <Button 
               type="submit" 
               size="lg"
-              className="w-full"
+              className="w-full btn-hover-lift"
               disabled={isSubmitting}
             >
               {isSubmitting ? "Sending..." : "Send Message"}

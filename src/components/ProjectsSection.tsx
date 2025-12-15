@@ -66,13 +66,13 @@ const ProjectsSection = React.memo(() => {
                 className="project-card grid md:grid-cols-5 gap-6 p-6"
               >
                 {/* Image */}
-                <div className="md:col-span-2">
+                <div className="md:col-span-2 img-zoom">
                   <div className="aspect-video rounded-lg overflow-hidden bg-muted">
                     <img
                       src={project.image}
                       alt={project.title}
                       loading="lazy"
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover transition-transform duration-500"
                     />
                   </div>
                 </div>
@@ -103,7 +103,7 @@ const ProjectsSection = React.memo(() => {
                   
                   {/* Links */}
                   <div className="flex gap-3">
-                    <Button asChild size="sm" variant="outline">
+                    <Button asChild size="sm" variant="outline" className="btn-hover-lift">
                       <a 
                         href={project.githubLink} 
                         target="_blank" 
@@ -114,7 +114,7 @@ const ProjectsSection = React.memo(() => {
                       </a>
                     </Button>
                     {project.demoLink && (
-                      <Button asChild size="sm">
+                      <Button asChild size="sm" className="btn-hover-lift">
                         <a 
                           href={project.demoLink} 
                           target="_blank" 

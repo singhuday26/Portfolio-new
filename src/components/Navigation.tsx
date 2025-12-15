@@ -76,7 +76,7 @@ const Navigation = () => {
                 <button
                   key={index}
                   onClick={() => scrollToSection(link.href)}
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                  className="nav-link text-sm text-muted-foreground hover:text-foreground"
                   role="menuitem"
                 >
                   {link.label}

@@ -150,46 +150,239 @@
     @apply text-lg text-muted-foreground max-w-2xl;
   }
 
-  /* Card styles */
+  /* Card styles with hover animations */
   .card-clean {
-    @apply bg-card border border-border rounded-lg p-6 transition-all duration-200;
+    @apply bg-card border border-border rounded-lg p-6 transition-all duration-300 ease-out;
   }
 
   .card-clean:hover {
-    @apply border-foreground/20;
+    @apply border-foreground/20 -translate-y-1 shadow-lg;
   }
 
-  /* Project card */
+  /* Project card with smooth hover */
   .project-card {
-    @apply bg-card border border-border rounded-xl overflow-hidden transition-all duration-200;
+    @apply bg-card border border-border rounded-xl overflow-hidden transition-all duration-300 ease-out;
   }
 
   .project-card:hover {
-    @apply border-foreground/20 shadow-lg;
+    @apply border-foreground/20 -translate-y-2 shadow-xl;
   }
 
-  /* Skill tag */
+  .project-card:hover img {
+    @apply scale-105;
+  }
+
+  /* Skill tag with pop effect */
   .skill-tag {
-    @apply px-3 py-1.5 text-sm font-medium bg-muted text-muted-foreground rounded-md transition-colors;
+    @apply px-3 py-1.5 text-sm font-medium bg-muted text-muted-foreground rounded-md transition-all duration-200;
   }
 
   .skill-tag:hover {
-    @apply bg-primary/10 text-primary;
+    @apply bg-primary/10 text-primary -translate-y-0.5 shadow-md;
   }
 
-  /* Simple fade-in animation */
-  .animate-in {
-    animation: fadeIn 0.5s ease-out forwards;
+  /* ===== ANIMATIONS ===== */
+
+  /* Fade in up - for scroll reveal */
+  .animate-fade-up {
+    animation: fadeUp 0.6s ease-out forwards;
+    opacity: 0;
   }
 
-  @keyframes fadeIn {
+  @keyframes fadeUp {
     from {
       opacity: 0;
-      transform: translateY(16px);
+      transform: translateY(30px);
     }
     to {
       opacity: 1;
       transform: translateY(0);
+    }
+  }
+
+  /* Fade in - simple */
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /* Slide in from left */
+  .animate-slide-left {
+    animation: slideLeft 0.6s ease-out forwards;
+    opacity: 0;
+  }
+
+  @keyframes slideLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  /* Slide in from right */
+  .animate-slide-right {
+    animation: slideRight 0.6s ease-out forwards;
+    opacity: 0;
+  }
+
+  @keyframes slideRight {
+    from {
+      opacity: 0;
+      transform: translateX(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  /* Scale in - for cards/images */
+  .animate-scale-in {
+    animation: scaleIn 0.5s ease-out forwards;
+    opacity: 0;
+  }
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  /* Stagger children - add delay classes */
+  .delay-100 { animation-delay: 100ms; }
+  .delay-200 { animation-delay: 200ms; }
+  .delay-300 { animation-delay: 300ms; }
+  .delay-400 { animation-delay: 400ms; }
+  .delay-500 { animation-delay: 500ms; }
+  .delay-600 { animation-delay: 600ms; }
+
+  /* Float animation for profile image */
+  .animate-float {
+    animation: float 4s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  /* Pulse glow for CTAs */
+  .animate-pulse-glow {
+    animation: pulseGlow 2s ease-in-out infinite;
+  }
+
+  @keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 0 0 0 hsl(var(--primary) / 0.4); }
+    50% { box-shadow: 0 0 20px 5px hsl(var(--primary) / 0.2); }
+  }
+
+  /* Underline grow effect for links */
+  .hover-underline {
+    @apply relative;
+  }
+
+  .hover-underline::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300;
+  }
+
+  .hover-underline:hover::after {
+    @apply w-full;
+  }
+
+  /* Button hover lift */
+  .btn-hover-lift {
+    @apply transition-all duration-200;
+  }
+
+  .btn-hover-lift:hover {
+    @apply -translate-y-0.5 shadow-lg;
+  }
+
+  .btn-hover-lift:active {
+    @apply translate-y-0 shadow-md;
+  }
+
+  /* Image zoom on hover */
+  .img-zoom {
+    @apply overflow-hidden;
+  }
+
+  .img-zoom img {
+    @apply transition-transform duration-500 ease-out;
+  }
+
+  .img-zoom:hover img {
+    @apply scale-110;
+  }
+
+  /* Text reveal animation */
+  .animate-text-reveal {
+    animation: textReveal 0.8s ease-out forwards;
+    opacity: 0;
+  }
+
+  @keyframes textReveal {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+      filter: blur(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+  }
+
+  /* Smooth scroll indicator bounce */
+  .animate-bounce-slow {
+    animation: bounceSlow 2s ease-in-out infinite;
+  }
+
+  @keyframes bounceSlow {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(8px); }
+  }
+
+  /* Nav link hover */
+  .nav-link {
+    @apply relative py-1 transition-colors duration-200;
+  }
+
+  .nav-link::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-primary rounded-full transition-all duration-300;
+  }
+
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+
+  /* Smooth entrance for page load */
+  .page-enter {
+    animation: pageEnter 0.8s ease-out forwards;
+  }
+
+  @keyframes pageEnter {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
     }
   }
 }
