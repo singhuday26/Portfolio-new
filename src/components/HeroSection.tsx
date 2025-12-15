@@ -1,19 +1,11 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Linkedin } from "lucide-react";
-import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
-
-// Profile image - update this path after adding your image to src/assets/
+import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
 import profileImage from "@/assets/profile.jpg";
 
 const HeroSection = React.memo(() => {
-  const { elementRef, hasIntersected } = useIntersectionObserver<HTMLElement>({
-    threshold: 0.1,
-    triggerOnce: true
-  });
-
-  const scrollToProjects = () => {
-    const element = document.getElementById('projects');
+  const scrollToAbout = () => {
+    const element = document.getElementById('about');
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
@@ -21,82 +13,98 @@ const HeroSection = React.memo(() => {
 
   return (
     <section
-      ref={elementRef}
-      className="relative min-h-screen flex items-center justify-center bg-background"
+      className="min-h-screen flex items-center justify-center bg-background pt-16"
       aria-label="Introduction"
     >
-      {/* Content */}
-      <div
-        className={`container mx-auto px-4 py-20 transition-all duration-700 ease-out ${
-          hasIntersected ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
-        }`}
-      >
+      <div className="container mx-auto px-6 py-20">
         <div className="max-w-3xl mx-auto text-center">
-          {/* Profile Image - Secondary, subtle placement */}
+          {/* Profile Image */}
           <div className="mb-8">
             <img
               src={profileImage}
-              alt="Uday Singh - UI Engineer"
-              width={112}
-              height={112}
+              alt="Uday Singh"
+              width={120}
+              height={120}
               loading="eager"
-              decoding="async"
-              className="w-28 h-28 rounded-full mx-auto object-cover shadow-sm ring-1 ring-border"
+              className="w-[120px] h-[120px] rounded-full mx-auto object-cover border-2 border-border"
             />
           </div>
 
-          {/* Name - Primary visual element */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-foreground mb-4">
+          {/* Name */}
+          <h1 className="text-5xl sm:text-6xl md:text-7xl font-semibold tracking-tight text-foreground mb-6">
             Uday Singh
           </h1>
 
-          {/* Headline - Secondary importance */}
-          <h2 className="text-xl sm:text-2xl font-medium text-muted-foreground mb-6">
-            UI Engineer · React & JavaScript Specialist
-          </h2>
-
-          {/* Description */}
-          <p className="text-base sm:text-lg text-muted-foreground/80 mb-10 max-w-2xl mx-auto leading-relaxed">
-            Building scalable, consumer-facing web applications with clean architecture 
-            and exceptional user experiences.
+          {/* Headline */}
+          <p className="text-xl sm:text-2xl text-muted-foreground mb-6">
+            UI Engineer
           </p>
 
-          {/* CTAs */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button
-              onClick={scrollToProjects}
-              size="lg"
-              className="min-w-[200px] font-medium"
+          {/* Description */}
+          <p className="text-base sm:text-lg text-muted-foreground/80 mb-10 max-w-xl mx-auto leading-relaxed">
+            Building scalable, consumer-facing web applications with React and modern JavaScript. Focused on clean architecture and exceptional user experiences.
+          </p>
+
+          {/* Social Links */}
+          <div className="flex items-center justify-center gap-4 mb-12">
+            <a
+              href="https://github.com/singhuday26"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 text-muted-foreground hover:text-foreground transition-colors"
+              aria-label="GitHub Profile"
             >
-              View Projects
-              <ArrowRight className="ml-2 w-4 h-4" aria-hidden="true" />
+              <Github className="w-5 h-5" />
+            </a>
+            <a
+              href="https://linkedin.com/in/udaysingh2626"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 text-muted-foreground hover:text-foreground transition-colors"
+              aria-label="LinkedIn Profile"
+            >
+              <Linkedin className="w-5 h-5" />
+            </a>
+            <a
+              href="mailto:udaysingh2626@gmail.com"
+              className="p-2 text-muted-foreground hover:text-foreground transition-colors"
+              aria-label="Email"
+            >
+              <Mail className="w-5 h-5" />
+            </a>
+          </div>
+
+          {/* CTAs */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button
+              onClick={scrollToAbout}
+              size="lg"
+              className="px-8"
+            >
+              View My Work
             </Button>
             <Button
               variant="outline"
               size="lg"
               asChild
-              className="min-w-[200px] font-medium"
+              className="px-8"
             >
-              <a
-                href="https://linkedin.com/in/udaysingh2626"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Linkedin className="mr-2 w-4 h-4" aria-hidden="true" />
-                LinkedIn
+              <a href="#contact">
+                Get in Touch
               </a>
             </Button>
           </div>
         </div>
-      </div>
 
-      {/* Subtle scroll indicator */}
-      <div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-        aria-hidden="true"
-      >
-        <div className="w-5 h-8 border-2 border-muted-foreground/30 rounded-full flex justify-center">
-          <div className="w-1 h-2 bg-muted-foreground/30 rounded-full mt-1.5 animate-pulse" />
+        {/* Scroll Indicator */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:block">
+          <button
+            onClick={scrollToAbout}
+            className="p-2 text-muted-foreground/50 hover:text-muted-foreground transition-colors"
+            aria-label="Scroll down"
+          >
+            <ArrowDown className="w-5 h-5 animate-bounce" />
+          </button>
         </div>
       </div>
     </section>
